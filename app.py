@@ -4,12 +4,11 @@ import asyncio
 import html
 import os
 import time
-import streamlit.components.v1 as components
 
+OUTPUT_FILE = "output.mp3"
 
-
-# --- Google Analytics ---
-components.html("""
+# --- Google Analytics (inline injection) ---
+st.markdown("""
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-13Z4BFNNSD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -17,9 +16,7 @@ components.html("""
   gtag('js', new Date());
   gtag('config', 'G-13Z4BFNNSD');
 </script>
-""", height=0)
-
-OUTPUT_FILE = "output.mp3"
+""", unsafe_allow_html=True)
 
 # Voices dictionary
 voices = {
